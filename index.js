@@ -44,9 +44,9 @@ const updateCustomer = (_id, customer) => {
 
 // Remove customer
 const removeCustomer = (_id) => {
-    Customer.remove({ _id })
+    Customer.deleteOne({ _id })
         .then(customer => {
-            console.info('Customer Updated');
+            console.info('Customer Removed');
         });
 }
 

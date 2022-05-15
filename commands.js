@@ -67,7 +67,15 @@ program
     .alias('u')
     .description('Update a customer')
     .action((_id) => {
-        prompt(questions).then(answers => updateCustomer(_id,answers));
+        prompt(questions).then(answers => updateCustomer(_id, answers));
     });
+
+//Remove Command
+program
+    .command('remove <-id>')
+    .alias('r')
+    .description('Remove a customer')
+    .action(_id => removeCustomer(_id));
+
 
 program.parse(process.argv);
