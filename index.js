@@ -50,6 +50,7 @@ const removeCustomer = (_id) => {
         });
 }
 
+
 //List customers
 const listCustomers =()=>{
     Customer.find()
