@@ -2,7 +2,10 @@ const program = require('commander');
 const { prompt } = require('inquirer');
 const {
     addCustomer,
-    findCustomer
+    findCustomer,
+    updateCustomer,
+    removeCustomer,
+    listCustomers
 } = require('./index');
 
 //customer questions
@@ -42,6 +45,7 @@ program
 //         addCustomer({ firstname, lastname, phone, email });
 //     });
 
+//Add Command
 program
     .command('add')
     .alias('a')
@@ -49,10 +53,21 @@ program
     .action(() => {
         prompt(questions).then(answers => addCustomer(answers));
     });
+
+//Find Command
 program
     .command('find <name>')
     .alias('f')
     .description('Find a customer')
     .action(name => findCustomer(name));
+
+//Update Command
+program
+    .command('update <_id>')
+    .alias('u')
+    .description('Update a customer')
+    .action((_id) => {
+        prompt(questions).then(answers => updateCustomer(_id,answers));
+    });
 
 program.parse(process.argv);

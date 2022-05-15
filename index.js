@@ -34,8 +34,37 @@ const findCustomer = (name) => {
         });
 }
 
+// Update customer
+const updateCustomer = (_id, customer) => {
+    Customer.updateOne({ _id }, customer)
+        .then(customer => {
+            console.info('Customer Updated');
+        });
+}
+
+// Remove customer
+const removeCustomer = (_id) => {
+    Customer.remove({ _id })
+        .then(customer => {
+            console.info('Customer Updated');
+        });
+}
+
+//List customers
+const listCustomers =()=>{
+    Customer.find()
+      .then(customers=>{
+          console.info(customers);
+          console.info(`${customers.length} matches`);
+      });
+}
+
 //Export all methods
 module.exports = {
     addCustomer,
-    findCustomer
+    findCustomer,
+    updateCustomer,
+    removeCustomer,
+    listCustomers
+
 }
